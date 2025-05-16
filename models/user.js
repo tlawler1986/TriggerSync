@@ -1,24 +1,34 @@
 const mongoose = require("mongoose");
-// shortcut variable
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+    },
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  name: {
-    type: String
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-}, {
-  // Mongoose will maintain a createdAt & updatedAt property
-  timestamps: true
-});
+  {
+    timestamps: true, 
+  }
+);
 
 module.exports = mongoose.model("User", userSchema);

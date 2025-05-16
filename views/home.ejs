@@ -2,4 +2,31 @@
 
 <h1>TriggerSync</h1>
 
+<section class="bio">
+  <h2>About the Creator</h2>
+  <p>
+    Hi, my name is Tim Lawler. I'm an avid and passionate firearms enthusiast—and self-proclaimed firearm "hoarder." Ever since my time with 7th Group starting in 2006, I've been steadily building my collection of firearms, ammunition, and accessories.
+    <br><br>
+    That collection grew even more once I left the military and started contracting overseas. You could call it an expensive hobby of mine... well, that and tattoos, haha.
+    <br><br>
+    I've always wanted a simple way to keep track of what I have. So I built <strong>TriggerSync</strong>—a clean, user-friendly tool to manage your firearms, ammo, and gear. 
+    <br><br>
+    Honestly, the biggest reason? To get my wife off my A$@ about organizing my growing collection, haha.
+    <br><br>
+    I hope you enjoy using it and check back for updates! 
+    <br>
+    Oh, and yes—I do have a boat. If you know, you know. 😉
+  </p>
+</section>
+
+<section class ="homepage"></section>
+    <% if (user) { %>
+        <span>Welcome, <strong> <%= user.username %></strong>!</span><br>
+        <a href="/unicorns" class="nav-btn">View your Inventory</a>
+  <% } else { %>
+    <a href="/auth/sign-up" class="nav-btn">SIGN UP</a>
+    <a href="/auth/sign-in" class="nav-btn">SIGN IN</a>
+  <% } %>
+</section>
+
 <%- include('./partials/footer.ejs') %>

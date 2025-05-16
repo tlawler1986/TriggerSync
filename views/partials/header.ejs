@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
-  <title>Express Starter</title>
+  <title>TriggerSync</title>
 </head>
 <body>
   <nav>
-    <a href="/">🏠</a>
     <div>
-      <a href="/unicorns">ALL UNICORNS</a>
+    <a href="/">Dashboard</a>
+    <a href="/">Community</a>
+    </div>
+    <div>
+      <a href="/unicorns">Inventory</a>
       <% if (user) { %>
-        <a href="/unicorns/new">ADD UNICORN</a>
         <a href="/auth/sign-out">SIGN OUT</a>
-        <span><%= user.name %></span>
+        <span><%= user.username %></span>
       <% } else { %>
         <a href="/auth/sign-up">SIGN UP</a>
         <a href="/auth/sign-in">SIGN IN</a>
