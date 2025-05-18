@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const ammosRouter = require("./controllers/ammos");
 
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
@@ -37,6 +38,7 @@ app.use(session({
 app.use(require('./middleware/add-user-to-req-and-locals'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use('/ammos', ammosRouter);
 
 // Routes below
 

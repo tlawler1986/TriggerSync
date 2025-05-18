@@ -22,8 +22,10 @@
 <section class ="homepage"></section>
     <% if (user) { %>
         <span>Welcome, <strong> <%= user.username %></strong>!</span><br>
+      <div class="home-btns">
         <a href="/firearms" class="nav-btn">View your Inventory</a>
         <a href="/firearms/new" class="nav-btn">Add a Firearm</a>
+      </div>
   <% } else { %>
     <a href="/auth/sign-up" class="nav-btn">SIGN UP</a>
     <a href="/auth/sign-in" class="nav-btn">SIGN IN</a>
