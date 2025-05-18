@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Add a New Firearm</h1>
+
+<form action="/firearms" method="POST">
+  <label for="manufacturer">Manufacturer:</label>
+  <input type="text" id="manufacturer" name="manufacturer" required>
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" name="model" required>
+
+  <label for="serialNumber">Serial Number: <small>(optional)</small></label>
+  <input type="text" id="serialNumber" name="serialNumber">
+
+  <label for="caliber">Caliber:</label>
+  <input type="text" id="caliber" name="caliber" required>
+
+  <label for="purchaseDate">Purchase Date: <small>(optional)</small></label>
+  <input type="date" id="purchaseDate" name="purchaseDate">
+
+  <label for="purchasePrice">Purchase Price ($): <small>(optional)</small></label>
+  <input type="number" step="0.01" id="purchasePrice" name="purchasePrice">
+
+  <label for="category">Category:</label>
+  <select id="category" name="category" required>
+    <option value="">-- Select Category --</option>
+    <option value="handgun">Handgun</option>
+    <option value="semi-automatic">Semi-Automatic</option>
+    <option value="shotgun">Shotgun</option>
+    <option value="bolt-action">Bolt-Action</option>
+    <option value="lever-action">Lever-Action</option>
+    <option value="other">Other</option>
+  </select>
+
+  <button type="submit">Add Firearm</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>

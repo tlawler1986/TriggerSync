@@ -1,0 +1,86 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>My Inventory</h1>
+
+<label for="category">Filter by Category:</label>
+<select id="category">
+  <option value="">-- All Categories --</option>
+  <option value="handgun">Handgun</option>
+  <option value="semi-automatic">semi-automatic</option>
+  <option value="shotgun">Shotgun</option>
+  <option value="bolt-action">Bolt-Action</option>
+  <option value="lever-action">Lever-Action</option>
+  <option value="other">Other</option>
+</select>
+<a href="/firearms/new" class="nav-btn">Add a Firearm</a>
+
+
+<table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Manufacturer</th>
+      <th>Serial Number</th>
+      <th>Caliber</th>
+      <th>Purchase Date</th>
+      <th>Purchase Price</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody id="firearms-container">
+    <% firearms.forEach(firearm => { %>
+      <tr>
+        <td><%= firearm.model %></td>
+        <td><%= firearm.manufacturer %></td>
+        <td><%= firearm.serialNumber || 'N/A' %></td>
+        <td><%= firearm.caliber %></td>
+        <td><%= firearm.purchaseDate ? firearm.purchaseDate.toLocaleDateString() : 'N/A' %></td>
+        <td><%= firearm.purchasePrice != null ? '$' + firearm.purchasePrice.toFixed(2) : 'N/A' %></td>
+        <td><%= firearm.category %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+
+<script>
+  document.getElementById('category').addEventListener('change', async function() {
+    const selectedCategory = this.value;
+    try {
+      const response = await fetch(`/firearms/api?category=${selectedCategory}`);
+      const data = await response.json();
+
+      const container = document.getElementById('firearms-container');
+      container.innerHTML = ''; 
+
+      if (data.length === 0) {
+        container.innerHTML = '<p>No firearms found.</p>';
+      } else {
+    data.forEach(firearm => {
+  const row = document.createElement('tr');
+  const purchaseDate = firearm.purchaseDate ? new Date(firearm.purchaseDate).toLocaleDateString() : 'N/A';
+  const purchasePrice = firearm.purchasePrice != null ? `$${parseFloat(firearm.purchasePrice).toFixed(2)}` : 'N/A';
+  const serialNumber = firearm.serialNumber || 'N/A';
+
+  row.innerHTML = `
+    <td>${firearm.model}</td>
+    <td>${firearm.manufacturer}</td>
+    <td>${serialNumber}</td>
+    <td>${firearm.caliber}</td>
+    <td>${purchaseDate}</td>
+    <td>${purchasePrice}</td>
+    <td>${firearm.category}</td>
+  `;
+  container.appendChild(row);
+});    
+}
+    } catch (err) {
+      console.error('AJAX error:', err);
+    }
+  });
+</script>
+
+
+
+
+<%- include('../partials/footer.ejs') %>

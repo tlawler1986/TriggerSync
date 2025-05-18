@@ -12,7 +12,6 @@ const firearmSchema = new Schema({
     },
     serialNumber: {
         type: String,
-        required: true,
     },
     caliber: {
         type: String,
@@ -20,15 +19,13 @@ const firearmSchema = new Schema({
     },
     purchaseDate: {
         type: Date,
-        required: true,
-    },
+        },
     purchasePrice: {
         type: Number,
-        required: true,
     },
     category: {
         type: String,
-        enum: ['handgun', 'rifle', 'shotgun'],
+        enum: ['handgun', 'semi-automatic', 'shotgun', 'bolt-action', 'lever-action', 'other'],
         required: true,
     },
 }, { timestamps: true }); 
