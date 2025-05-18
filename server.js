@@ -5,24 +5,18 @@ const app = express();
 
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-// logging middleware
 const morgan = require("morgan");
 const session = require('express-session');
+const path = require('path');
 
-// Set the port from environment variable or default to 3000
 const port = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGODB_URI);
 
-// Listen for the 'connected' event. 
-// .on is similar to addEventListener in the DOM
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-// Middleware to "serve"/return static assets, e.g., stylesheets,
-// when requested by the browser.
-// 'public' is the folder name that all static assets will be saved in.
 app.use(express.static('public'));
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
@@ -41,7 +35,8 @@ app.use(session({
 
 // If a user is logged in, add the user's doc to req.user and res.locals.user
 app.use(require('./middleware/add-user-to-req-and-locals'));
-
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Routes below
 

@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Edit Firearm: <%= firearm.model %></h1>
+
+<form action="/firearms/<%= firearm._id %>?_method=PUT" method="POST">
+  <label for="manufacturer">Manufacturer:</label>
+  <input type="text" id="manufacturer" name="manufacturer" value="<%= firearm.manufacturer %>" required>
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" name="model" value="<%= firearm.model %>" required>
+
+  <label for="serialNumber">Serial Number:</label>
+  <input type="text" id="serialNumber" name="serialNumber" value="<%= firearm.serialNumber || '' %>">
+
+  <label for="caliber">Caliber:</label>
+  <input type="text" id="caliber" name="caliber" value="<%= firearm.caliber %>" required>
+
+  <label for="purchaseDate">Purchase Date:</label>
+  <input type="date" id="purchaseDate" name="purchaseDate" value="<%= firearm.purchaseDate ? firearm.purchaseDate.toISOString().split('T')[0] : '' %>">
+
+  <label for="purchasePrice">Purchase Price ($):</label>
+  <input type="number" step="0.01" id="purchasePrice" name="purchasePrice" value="<%= firearm.purchasePrice || '' %>">
+
+  <label for="category">Category:</label>
+  <select id="category" name="category" required>
+    <% ['handgun', 'semi-automatic', 'shotgun', 'bolt-action', 'lever-action', 'other'].forEach(cat => { %>
+      <option value="<%= cat %>" <%= firearm.category === cat ? 'selected' : '' %>><%= cat %></option>
+    <% }) %>
+  </select>
+
+  <button type="submit">Update Firearm</button>
+</form>
+
+<a href="/firearms/<%= firearm._id %>">Cancel</a>
+
+<%- include('../partials/footer.ejs') %>

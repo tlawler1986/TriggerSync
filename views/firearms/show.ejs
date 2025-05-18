@@ -1,0 +1,44 @@
+<%- include('../partials/header.ejs') %>
+
+<h1><%= firearm.model %> - Details</h1>
+
+<table border="1" cellpadding="10" cellspacing="0">
+  <tr>
+    <th>Manufacturer</th>
+    <td><%= firearm.manufacturer %></td>
+  </tr>
+  <tr>
+    <th>Model</th>
+    <td><%= firearm.model %></td>
+  </tr>
+  <tr>
+    <th>Serial Number</th>
+    <td><%= firearm.serialNumber || 'N/A' %></td>
+  </tr>
+  <tr>
+    <th>Caliber</th>
+    <td><%= firearm.caliber %></td>
+  </tr>
+  <tr>
+    <th>Purchase Date</th>
+    <td><%= firearm.purchaseDate ? firearm.purchaseDate.toLocaleDateString() : 'N/A' %></td>
+  </tr>
+  <tr>
+    <th>Purchase Price</th>
+    <td><%= firearm.purchasePrice != null ? '$' + firearm.purchasePrice.toFixed(2) : 'N/A' %></td>
+  </tr>
+  <tr>
+    <th>Category</th>
+    <td><%= firearm.category %></td>
+  </tr>
+  <tr>
+    <th>Added On</th>
+    <td><%= firearm.createdAt.toLocaleDateString() %></td>
+  </tr>
+</table>
+
+<a href="/firearms/<%= firearm._id %>/edit">Edit Firearm</a>
+
+<a href="/firearms" class="nav-btn">Back to Inventory</a>
+
+<%- include('../partials/footer.ejs') %>

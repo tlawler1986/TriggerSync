@@ -4,6 +4,7 @@ const Firearm = require('../models/firearm');
 
 const ensureLoggedIn = require('../middleware/ensure-logged-in');
 
+// GET /firearms — Show all firearms
 router.get('/', ensureLoggedIn, async (req, res) => {
     try {
         const query = {};
@@ -18,6 +19,7 @@ router.get('/', ensureLoggedIn, async (req, res) => {
     }
 });
 
+// GET /api/firearms — Get all firearms (API endpoint)
 router.get('/api', ensureLoggedIn, async (req, res) => {
     try {
         const query = {};
@@ -32,10 +34,12 @@ router.get('/api', ensureLoggedIn, async (req, res) => {
     }
 });
 
+// GET /firearms/new — Show form to create a new firearm
 router.get('/new', ensureLoggedIn, (req, res) => {
   res.render('firearms/new.ejs');
 });
 
+// POST /firearms — Create a new firearm
 router.post('/', ensureLoggedIn, async (req, res) => {
   try {
     const firearmData = {
@@ -52,7 +56,57 @@ router.post('/', ensureLoggedIn, async (req, res) => {
   }
 });
 
+// PUT /firearms/:id — Update a firearm
+router.put('/:id', ensureLoggedIn, async (req, res) => {
+  try {
+    const updatedData = {
+      model: req.body.model,
+      manufacturer: req.body.manufacturer,
+      serialNumber: req.body.serialNumber || null,
+      caliber: req.body.caliber,
+      purchaseDate: req.body.purchaseDate || null,
+      purchasePrice: req.body.purchasePrice || null,
+      category: req.body.category,
+    };
+    await Firearm.findByIdAndUpdate(req.params.id, updatedData, { new: true });
+    res.redirect(`/firearms/${req.params.id}`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Update failed');
+  }
+});
 
+// GET /firearms/:id/edit — Show edit form for a firearm
+router.get('/:id/edit', ensureLoggedIn, async (req, res) => {
+  try {
+    const firearm = await Firearm.findById(req.params.id);
+    if (!firearm) return res.status(404).send('Firearm not found');
+    res.render('firearms/edit', { firearm });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
+// GET /firearms/:id — Show single firearm details
+router.get('/:id', ensureLoggedIn, async (req, res) => {
+  try {
+    const firearm = await Firearm.findById(req.params.id);
+    if (!firearm) {
+      return res.status(404).send('Firearm not found');
+    }
+    res.render('firearms/show.ejs', { firearm });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
+// DELETE /firearms/:id — Delete a firearm
+router.delete('/:id', ensureLoggedIn, async (req, res) => {
+  await Firearm.findByIdAndDelete(req.params.id);
+  res.redirect('/firearms');
+});
 
 
 module.exports = router;
