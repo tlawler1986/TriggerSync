@@ -6,11 +6,11 @@ const ammoSchema = new Schema({
         type: Number,
         default: 0, 
     },
-    "40": {     // Changed '.40' to '40'
+    "40": {  
         type: Number,
         default: 0, 
     },
-    "223_556": {   // replaced '.' and '/' with underscore
+    "223_556": {  
         type: Number,
         default: 0, 
     },

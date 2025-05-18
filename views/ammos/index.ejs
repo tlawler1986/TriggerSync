@@ -1,9 +1,56 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/header') %>
 
 <h1>Ammo Stockpile</h1>
 
+<form action="/ammos/<%= ammo._id %>?_method=PUT" method="POST">
+<div class= "ammo-container">
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Caliber</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9mm</td>
+        <td><input type="number" name="9mm" value="<%= ammo['9mm'] %>" /></td>
+      </tr>
+      <tr>
+        <td>.40</td>
+        <td><input type="number" name="40" value="<%= ammo['40'] %>" /></td>
+      </tr>
+      <tr>
+        <td>.223 / 5.56</td>
+        <td><input type="number" name="223_556" value="<%= ammo['223_556'] %>" /></td>
+      </tr>
+      <tr>
+        <td>.308 / 7.62</td>
+        <td><input type="number" name="308_762" value="<%= ammo['308_762'] %>" /></td>
+      </tr>
+      <tr>
+        <td>.22LR</td>
+        <td><input type="number" name="22LR" value="<%= ammo['22LR'] %>" /></td>
+      </tr>
+      <tr>
+        <td>12 Gauge</td>
+        <td><input type="number" name="12Gauge" value="<%= ammo['12Gauge'] %>" /></td>
+      </tr>
+      <tr>
+        <td>6.5 Creedmoor</td>
+        <td><input type="number" name="6_5Creedmoor" value="<%= ammo['6_5Creedmoor'] %>" /></td>
+      </tr>
+      <tr>
+        <td>.300 Win Mag</td>
+        <td><input type="number" name="300WinMag" value="<%= ammo['300WinMag'] %>" /></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="ammo-btns">
+    <button type="submit">Update Ammo</button>
+    <a href="/firearms" class="nav-btn">Back to Inventory</a>
+  </div>
+</div>
+</form>
 
-
-
-
-<%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer') %>
