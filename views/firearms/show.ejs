@@ -32,6 +32,15 @@
     <td><%= firearm.category %></td>
   </tr>
   <tr>
+    <th>Accessories</th>
+    <td><%= firearm.accessories || 'N/A' %></td>
+  </tr>
+  <tr>
+    <th>Notes</th>
+    <td><%= firearm.notes || 'N/A' %></td>
+  </tr>
+  <tr>
+    <th>Last Updated</th>
     <th>Added On</th>
     <td><%= firearm.createdAt.toLocaleDateString() %></td>
   </tr>

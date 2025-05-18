@@ -24,18 +24,22 @@
       <th>Purchase Date</th>
       <th>Purchase Price</th>
       <th>Category</th>
+      <th>Accessories</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody id="firearms-container">
     <% firearms.forEach(firearm => { %>
       <tr>
-        <td><%= firearm.model %></td>
+        <td><a href="/firearms/<%= firearm._id %>"><%= firearm.model %></a></td>
         <td><%= firearm.manufacturer %></td>
         <td><%= firearm.serialNumber || 'N/A' %></td>
         <td><%= firearm.caliber %></td>
         <td><%= firearm.purchaseDate ? firearm.purchaseDate.toLocaleDateString() : 'N/A' %></td>
         <td><%= firearm.purchasePrice != null ? '$' + firearm.purchasePrice.toFixed(2) : 'N/A' %></td>
         <td><%= firearm.category %></td>
+        <td><%= firearm.accessories %></td>
+        <td><%= firearm.notes || 'N/A' %></td>
         <td>
           <a href="/firearms/<%= firearm._id %>/edit">Edit</a>
           <form action="/firearms/<%= firearm._id %>?_method=DELETE" method="POST" style="display:inline;">
@@ -74,6 +78,8 @@
     <td>${purchaseDate}</td>
     <td>${purchasePrice}</td>
     <td>${firearm.category}</td>
+    <td>${firearm.accessories}</td>
+    <td>${firearm.notes || 'N/A'}</td>
   `;
   container.appendChild(row);
 });    

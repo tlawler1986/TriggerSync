@@ -28,6 +28,17 @@ const firearmSchema = new Schema({
         enum: ['handgun', 'semi-automatic', 'shotgun', 'bolt-action', 'lever-action', 'other'],
         required: true,
     },
+    accessories: {
+        type: [String],
+    },
+    notes: {
+            type: String,
+    },
+    user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
 }, { timestamps: true }); 
 
 module.exports = mongoose.model('Firearm', firearmSchema);

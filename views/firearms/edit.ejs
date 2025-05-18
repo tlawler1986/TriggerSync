@@ -28,6 +28,12 @@
     <% }) %>
   </select>
 
+   <label for="accessories">Accessories:</label>
+   <input type="text" id="accessories" name="accessories" value="<%= firearm.accessories || '' %>">    
+   
+ <label for="notes">Notes:</label>
+ <textarea id="notes" name="notes"><%= firearm.notes || '' %></textarea>
+
   <button type="submit">Update Firearm</button>
 </form>
 
