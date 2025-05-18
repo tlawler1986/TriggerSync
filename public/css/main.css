@@ -195,4 +195,8 @@ button:hover {
   transition: background-color 0.3s ease;
 }
 
+.ammo-btns button:hover {
+  cursor: pointer;
+}
+
 
