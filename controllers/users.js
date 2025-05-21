@@ -16,7 +16,6 @@ router.get('/index', ensureLoggedIn, async (req, res) => {
   }
 });
 
-
 router.get('/:id', async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).send('Invalid user ID');

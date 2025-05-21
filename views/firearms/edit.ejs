@@ -2,7 +2,7 @@
 
 <h1>Edit Firearm: <%= firearm.model %></h1>
 
-<form action="/firearms/<%= firearm._id %>?_method=PUT" method="POST">
+<form id="firearm-form" action="/firearms/<%= firearm._id %>?_method=PUT" method="POST">
   <label for="manufacturer">Manufacturer:</label>
   <input type="text" id="manufacturer" name="manufacturer" value="<%= firearm.manufacturer %>" required>
 
@@ -33,10 +33,11 @@
    
  <label for="notes">Notes:</label>
  <textarea id="notes" name="notes"><%= firearm.notes || '' %></textarea>
-
-  <button type="submit">Update Firearm</button>
 </form>
-
-<a href="/firearms/<%= firearm._id %>">Cancel</a>
+ 
+ <div class="edit-btns">
+   <button type="submit" form="firearm-form" class="nav-btn">Update Firearm</button>
+   <a href="/firearms/<%= firearm._id %>" class="nav-btn">Cancel</a>
+  </div>
 
 <%- include('../partials/footer.ejs') %>

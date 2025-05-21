@@ -29,36 +29,40 @@
   </table>
 
 <script>
-  const viewedUserId = "<%= viewedUser._id %>";
-  document.getElementById('category').addEventListener('change', async function() {
-    const selectedCategory = this.value;
-    try {
-      const response = await fetch(`/firearms/api?category=${selectedCategory}&userId=${viewedUserId}`);
-      const data = await response.json();
-      const tbody = document.querySelector('table tbody');
-      tbody.innerHTML = '';
-      if (data.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6">No firearms found.</td></tr>';
-      } else {
-        data.forEach(firearm => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${firearm.manufacturer}</td>
-            <td>${firearm.model}</td>
-            <td>${firearm.caliber}</td>
-            <td>${firearm.category}</td>
-            <td>${firearm.accessories ? firearm.accessories.join(', ') : '-'}</td>
-            <td>${firearm.notes || '-'}</td>
-          `;
-          tbody.appendChild(row);
-        });
-      }
-    } catch (err) {
-      console.error('AJAX error:', err);
+  document.addEventListener('DOMContentLoaded', function () {
+    const viewedUserId = "<%= viewedUser._id %>";
+    const categoryElement = document.getElementById('category');
+    if (categoryElement) {
+      categoryElement.addEventListener('change', async function() {
+        const selectedCategory = this.value;
+        try {
+          const response = await fetch(`/firearms/api?category=${selectedCategory}&userId=${viewedUserId}`);
+          const data = await response.json();
+          const tbody = document.querySelector('table tbody');
+          tbody.innerHTML = '';
+          if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6">No firearms found.</td></tr>';
+          } else {
+            data.forEach(firearm => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                <td>${firearm.manufacturer}</td>
+                <td>${firearm.model}</td>
+                <td>${firearm.caliber}</td>
+                <td>${firearm.category}</td>
+                <td>${firearm.accessories ? firearm.accessories.join(', ') : '-'}</td>
+                <td>${firearm.notes || '-'}</td>
+              `;
+              tbody.appendChild(row);
+            });
+          }
+        } catch (err) {
+          console.error('AJAX error:', err);
+        }
+      });
     }
   });
 </script>
-
 
 
 <% } else { %>
