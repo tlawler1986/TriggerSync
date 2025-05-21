@@ -38,7 +38,10 @@
 <label for="notes">Notes: <small>(optional)</small></label>
 <input type="text" id="notes" name="notes">
 
-  <button type="submit">Add Firearm</button>
+<div class="new-btns" style="grid-column: span 2;">
+  <button type="submit" class="nav-btn">Add Firearm <i class="bi bi-plus-circle"></i></button>
+  <a href="/firearms" class="nav-btn">Cancel</a>
+</div>
 </form>
 
 <%- include('../partials/footer.ejs') %>

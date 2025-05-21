@@ -4,7 +4,9 @@
 }
 
 h1 {
-  
+  font-family: "Gudea", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 body {
@@ -160,6 +162,18 @@ button:hover {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.new-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.new-btns .btn {
+  flex: 1;
+  text-align: center;
 }
 
 .home-btns {

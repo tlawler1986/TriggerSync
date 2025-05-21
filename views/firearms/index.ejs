@@ -15,7 +15,7 @@
 <div class="inventory">
 <p><strong>Here you can view and manage your firearms and ammunition.</strong></p>
   <div class="index-btns">
-    <a href="/firearms/new" class="nav-btn">Add a Firearm</a>
+    <a href="/firearms/new" class="nav-btn">Add a Firearm <i class="bi bi-plus-circle"></i></a>
     <a href="/ammos/index" class="nav-btn">Ammo Stockpile</a>
   </div>
 </div>
@@ -77,16 +77,16 @@
   const serialNumber = firearm.serialNumber || 'N/A';
 
   row.innerHTML = `
-    <td>${firearm.model}</td>
+    <td><a href="/firearms/${firearm._id}">${firearm.model}</a></td>
     <td>${firearm.manufacturer}</td>
     <td>${serialNumber}</td>
     <td>${firearm.caliber}</td>
     <td>${purchaseDate}</td>
     <td>${purchasePrice}</td>
     <td>${firearm.category}</td>
-    <td>${firearm.accessories}</td>
+    <td>${firearm.accessories || 'N/A'}</td>
     <td>${firearm.notes || 'N/A'}</td>
-  `;
+`;
   container.appendChild(row);
 });    
 }

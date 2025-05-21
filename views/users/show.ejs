@@ -1,0 +1,70 @@
+<%- include('../partials/header.ejs') %>
+
+<h1><%= viewedUser.username %>'s Inventory</h1>
+
+<% if (firearms && firearms.length) { %>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Manufacturer</th>
+        <th>Model</th>
+        <th>Caliber</th>
+        <th>Category</th>
+        <th>Accessories</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id ="firearms-container">
+      <% firearms.forEach(firearm => { %>
+        <tr>
+          <td><%= firearm.manufacturer %></td>
+          <td><%= firearm.model %></td>
+          <td><%= firearm.caliber %></td>
+          <td><%= firearm.category %></td>
+          <td><%= firearm.accessories%></td>
+          <td><%= firearm.notes || '-' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+<script>
+  const viewedUserId = "<%= viewedUser._id %>";
+  document.getElementById('category').addEventListener('change', async function() {
+    const selectedCategory = this.value;
+    try {
+      const response = await fetch(`/firearms/api?category=${selectedCategory}&userId=${viewedUserId}`);
+      const data = await response.json();
+      const tbody = document.querySelector('table tbody');
+      tbody.innerHTML = '';
+      if (data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6">No firearms found.</td></tr>';
+      } else {
+        data.forEach(firearm => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${firearm.manufacturer}</td>
+            <td>${firearm.model}</td>
+            <td>${firearm.caliber}</td>
+            <td>${firearm.category}</td>
+            <td>${firearm.accessories ? firearm.accessories.join(', ') : '-'}</td>
+            <td>${firearm.notes || '-'}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+    } catch (err) {
+      console.error('AJAX error:', err);
+    }
+  });
+</script>
+
+
+
+<% } else { %>
+  <p>This user has no firearms listed.</p>
+<% } %>
+
+<a href="/users/index" class="nav-btn">Back to Users</a>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const {firearmSchema} = require("./firearm");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
@@ -25,6 +26,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    firearms: [{ type: Schema.Types.ObjectId, ref: 'Firearm' }]
   },
   {
     timestamps: true, 
