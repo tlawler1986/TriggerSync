@@ -2,7 +2,7 @@
     <img src='images/banner.jpg'>
 </div>
 
-# TriggerSync <i class="bi bi-crosshair2">
+# TriggerSync 🎯
 **Created by Tim Lawler**
 
 [Click to visit TriggerSync](https://triggersync-d680b3b9f365.herokuapp.com/)
@@ -17,15 +17,15 @@
 
  # 🖥️ Technologies Used
 
- -JavaScript
- -HTML
- -CSS
- -EJS
- -Node.js/Express.js
- -MongoDB
- -Mongoose
- -Heroku
- -GitHub
+ - JavaScript
+ - HTML
+ - CSS
+ - EJS
+ - Node.js/Express.js
+ - MongoDB
+ - Mongoose
+ - Heroku
+ - GitHub
 
 # How to use the App
 1. Just like any typical website that contains a database, the potention user will have to sign up for an account, with name, email, username and password
