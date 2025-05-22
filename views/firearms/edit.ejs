@@ -38,6 +38,9 @@
 
  <div class="edit-btns" style="grid-column: span 2;">
    <button type="submit" form="firearm-form" class="nav-btn">Update Firearm</button>
+   <form action="/firearms/<%= firearm._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="nav-btn" onclick="return confirm('Are you sure you want to delete this firearm?');">Delete</button>
+    </form>
    <a href="/firearms/<%= firearm._id %>" class="nav-btn">Cancel</a>
 </div>
 </form>
