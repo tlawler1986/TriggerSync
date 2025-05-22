@@ -37,3 +37,4 @@
 [Link to my Trello Board for future updates](https://trello.com/b/khXfJOLp)
  - [   ] Adding a search box, so a user can search for a specific user or firearm.  It'll show that user's inventory, or users that own that specific firearm.
  - [   ] Adding the ability to message other users.  After viewing a user's inventory, and reading their specific notes on a firearm, another user would be able to message them to obtain more information on the specific firearm.  For individuals that may be on the fence about purchasing that specific firearm.
+ - [   ] Adding the ability to upload users own pictures of firearms to their firearms in the inventory, showcasing accessories, wraps etc.
