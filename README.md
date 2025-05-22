@@ -1,5 +1,5 @@
 <div align="center" id="banner">
-    <img src='/images/banner.jpg'>
+    <img src='images/banner.jpg'>
 </div>
 
 # TriggerSync <i class="bi bi-crosshair2">
@@ -12,8 +12,8 @@
 
  # 📷 Screenshot
 
- **Home Page** <img src='/images/home.png' alt="screenshot">
- **Inventory Page** <img src='/images/inventory.png' alt="screenshot">
+ **Home Page** <img src='images/home.png' alt="screenshot">
+ **Inventory Page** <img src='images/inventory.png' alt="screenshot">
 
  # 🖥️ Technologies Used
 
