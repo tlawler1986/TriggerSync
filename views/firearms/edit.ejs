@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
+<div class="firearm-container">
 <h1>Edit Firearm: <%= firearm.model %></h1>
 
 <form id="firearm-form" action="/firearms/<%= firearm._id %>?_method=PUT" method="POST">
@@ -33,11 +34,12 @@
    
  <label for="notes">Notes:</label>
  <textarea id="notes" name="notes"><%= firearm.notes || '' %></textarea>
-</form>
- 
- <div class="edit-btns">
+</div>
+
+ <div class="edit-btns" style="grid-column: span 2;">
    <button type="submit" form="firearm-form" class="nav-btn">Update Firearm</button>
    <a href="/firearms/<%= firearm._id %>" class="nav-btn">Cancel</a>
-  </div>
+</div>
+</form>
 
 <%- include('../partials/footer.ejs') %>

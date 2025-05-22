@@ -1,10 +1,11 @@
 <%- include('../partials/header') %>
 
+<main>
 <h1>Ammo Stockpile</h1>
 
 <form action="/ammos/<%= ammo._id %>?_method=PUT" method="POST">
-<div class= "ammo-container">
-  <table border="1" cellpadding="10" cellspacing="0">
+  <div class= "ammo-container">
+  <table>
     <thead>
       <tr>
         <th>Caliber</th>
@@ -52,5 +53,6 @@
   </div>
 </div>
 </form>
+</main>
 
 <%- include('../partials/footer') %>

@@ -11,11 +11,12 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   font-size: 4rem;
   margin-bottom: 10px;
+  margin-top: -2rem;
 }
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   background: url('/images/background.jpg');
@@ -76,6 +77,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 5vmin;
+  padding-bottom: 3rem;
 }
 
 form {
@@ -112,7 +114,7 @@ button:hover {
 
 .nav-btn {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   margin: 0.3rem;
   background-color: gray;
   color: black;
@@ -121,6 +123,8 @@ button:hover {
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  min-width: 120px;
+  font-size: 1.3rem;
 }
 
 .bio {
@@ -173,6 +177,15 @@ button:hover {
 .category-filter {
   color: white;
   margin-top: 0;
+  font-size: 1.5rem;
+} 
+
+#category {
+  padding: 0.5rem;
+  width: 250px;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 1.1rem;
 }
 
 .index-btns {
@@ -189,11 +202,6 @@ button:hover {
   gap: 0.5rem;
 }
 
-.new-btns .btn {
-  flex: 1;
-  text-align: center;
-}
-
 .home-btns {
   display: flex;
   flex-wrap: wrap;
@@ -205,26 +213,20 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: .5rem;
+  margin-bottom: 3rem;
+  }
+
+.ammo-container table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .ammo-btns {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
-}
-
-.ammo-btns button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin: 0.3rem;
-  background-color: gray;
-  color: black;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  margin-top: -5rem;
 }
 
 .ammo-btns button:hover {
@@ -233,13 +235,33 @@ button:hover {
 
 table {
   background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 5rem;
 }
 
 .edit-btns {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.index-buttons {
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 0;
+}
+
+.show-btns {
+  display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: -4rem;
+  padding-top: 0;
+}
+
+.show-page {
+  margin-bottom: 0;
 }
 
 .community {
@@ -248,4 +270,19 @@ table {
 
 .no-firearms-msg {
   color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  }
+
+.user-show {
+  margin-top: 2rem; 
+  margin-bottom: -4rem;
+  text-align: center;
+}
+
+.firearm-container {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }

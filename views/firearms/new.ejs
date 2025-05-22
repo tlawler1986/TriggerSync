@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
+<div class="firearm-container">
 <h1>Add a New Firearm</h1>
 
 <form action="/firearms" method="POST">
@@ -37,6 +38,7 @@
 
 <label for="notes">Notes: <small>(optional)</small></label>
 <input type="text" id="notes" name="notes">
+</div>
 
 <div class="new-btns" style="grid-column: span 2;">
   <button type="submit" class="nav-btn">Add Firearm <i class="bi bi-plus-circle"></i></button>

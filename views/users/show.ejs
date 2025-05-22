@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
+<div class="user-show">
 <h1><%= viewedUser.username %>'s Inventory</h1>
 
 <% if (firearms && firearms.length) { %>
@@ -27,6 +28,7 @@
       <% }) %>
     </tbody>
   </table>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -69,5 +71,6 @@
 <% } %>
 
 <a href="/users/index" class="nav-btn">Back to Users</a>
+
 
 <%- include('../partials/footer.ejs') %>

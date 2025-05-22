@@ -32,7 +32,7 @@ const firearmSchema = new Schema({
         type: [String],
     },
     notes: {
-            type: String,
+        type: String,
     },
     user: {
     type: mongoose.Schema.Types.ObjectId,

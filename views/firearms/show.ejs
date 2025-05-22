@@ -2,6 +2,7 @@
 
 <h1><%= firearm.model %> - Details</h1>
 
+<div class="show-page">>
 <table border="1" cellpadding="10" cellspacing="0">
   <tr>
     <th>Manufacturer</th>
@@ -45,9 +46,11 @@
     <td><%= firearm.createdAt.toLocaleDateString() %></td>
   </tr>
 </table>
+</div>
 
+<div class="show-btns">
 <a href="/firearms/<%= firearm._id %>/edit" class="nav-btn">Edit Firearm</a>
-
 <a href="/firearms" class="nav-btn">Back to Inventory</a>
+</div>
 
 <%- include('../partials/footer.ejs') %>

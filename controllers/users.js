@@ -9,7 +9,7 @@ const ensureLoggedIn = require('../middleware/ensure-logged-in');
 router.get('/index', ensureLoggedIn, async (req, res) => {
   try {
     const users = await User.find({}, 'username');
-    res.render('users/index.ejs', { users, user: req.session.user });
+    res.render('users/index.ejs', { users });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error loading users');
@@ -27,7 +27,6 @@ router.get('/:id', async (req, res) => {
     res.render('users/show.ejs', {
       firearms,        
       viewedUser,
-      user: req.session.user
     });
   } catch (err) {
     console.error(err);
