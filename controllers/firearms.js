@@ -7,8 +7,7 @@ const ensureLoggedIn = require('../middleware/ensure-logged-in');
 // GET /firearms — Show all firearms for the logged-in user
 router.get('/', ensureLoggedIn, async (req, res) => {
   try {
-    const query = { user: req.user._id }; // 🔐 Filter by logged-in user
-
+    const query = { user: req.user._id };
     if (req.query.category && req.query.category !== '') {
       query.category = req.query.category;
     }
@@ -89,7 +88,6 @@ router.put('/:id', ensureLoggedIn, async (req, res) => {
   }
 });
 
-
 // GET /firearms/:id/edit — Show edit form for a firearm
 router.get('/:id/edit', ensureLoggedIn, async (req, res) => {
   try {
@@ -101,7 +99,6 @@ router.get('/:id/edit', ensureLoggedIn, async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-
 
 // GET /firearms/:id — Show single firearm details
 router.get('/:id', ensureLoggedIn, async (req, res) => {
@@ -123,6 +120,5 @@ router.delete('/:id', ensureLoggedIn, async (req, res) => {
   if (!firearm) return res.status(404).send('Firearm not found');
   res.redirect('/firearms');
 });
-
 
 module.exports = router;

@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const Firearm = require('../models/firearm');
 const ensureLoggedIn = require('../middleware/ensure-logged-in');
 
-
 router.get('/index', ensureLoggedIn, async (req, res) => {
   try {
     const users = await User.find({}, 'username');
@@ -33,6 +32,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).send("Error loading user's inventory");
   }
 });
-
 
 module.exports = router;
